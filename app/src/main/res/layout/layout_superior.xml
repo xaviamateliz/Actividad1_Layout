@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_barca"
+    tools:context=".MainActivity">
+
+    <!-- Línea vertical al 52%: los textos quedan a su izquierda -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_centro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <!-- Jugador: scaleX/scaleY agrandan la propia imagen (Lamine) sin cambiar el cuadro.
+         El pivote está abajo en el centro del cuadro (85dp = la mitad de 170dp, 300dp = el fondo),
+         así Lamine crece hacia arriba y hacia los lados, sin hundirse.
+         Para más grande sube el 3 (por ejemplo 3.5), para más pequeño bájalo (2.5). -->
+
+    <!-- Foto de perfil circular: tarjeta de 48dp con esquinas de 24dp = círculo -->
+
+    <ImageView
+        android:id="@+id/img_destacada"
+        android:layout_width="170dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="364dp"
+        android:contentDescription="Jugador del Barça"
+        android:scaleType="fitEnd"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        android:src="@drawable/lamine"
+        android:transformPivotX="85dp"
+        android:transformPivotY="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_perfil"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fotoperfil" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Campana: círculo blanco con el icono dentro -->
+
+    <!-- Título en dos líneas (\n), limitado a la mitad izquierda -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_campana"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="36dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/card_perfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_perfil"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/img_campana"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="Notificaciones"
+            android:src="@android:drawable/ic_lock_idle_alarm" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Subtítulo con constraints, sin pisar al jugador -->
+
+    <!-- Botón redondeado con icono -->
+
+    <TextView
+        android:id="@+id/txt_welcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="¡Hola\nCuler!"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/guideline_centro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="135dp" />
+
+    <TextView
+        android:id="@+id/txt_subtitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:text="¿Listo para el partido de hoy?"
+        android:textColor="#666666"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_centro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_welcome" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_accion_principal"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Ver tienda oficial"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:backgroundTint="#2231FF"
+        app:cornerRadius="28dp"
+        app:icon="@android:drawable/ic_menu_view"
+        app:iconGravity="textStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_subtitulo" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="75dp"
+        android:layout_height="21dp"
+        app:srcCompat="@drawable/barra_de_estado_iphone__1_"
+        tools:layout_editor_absoluteX="327dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="54dp"
+        android:layout_height="18dp"
+        app:srcCompat="@drawable/hora"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
