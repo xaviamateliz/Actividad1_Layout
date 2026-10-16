@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Actividad1_Layout" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Barra de estado transparente: se ve el fondo por detrás -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Hora e iconos oscuros, porque el fondo es claro -->
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Mismo degradado detrás de la barra, para que se vea continuo -->
+        <item name="android:windowBackground">@drawable/bg_gradient_barca</item>
+    </style>
+
+    <style name="Theme.Actividad1_Layout" parent="Base.Theme.Actividad1_Layout" />
+</resources>
