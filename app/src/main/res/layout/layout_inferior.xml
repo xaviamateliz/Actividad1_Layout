@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"> <!-- Fondo blanco para la parte inferior -->
+
+    <!-- Título Categorías (Our Services en el original) -->
+
+    <!-- Icono 1: Tienda -->
+    <!-- Placeholder azul claro --><![CDATA[
+    android:layout_marginTop="16dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/icon_fisio"
+    app:layout_constraintTop_toBottomOf="@id/txt_categorias" />
+
+
+
+
+
+
+
+
+
+
+
+    ]]>
+
+    <TextView
+        android:id="@+id/txt_categorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="340dp"
+        android:text="Categorías"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_tienda"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/descarga__2_"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="377dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tienda"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_tienda"
+        app:layout_constraintStart_toStartOf="@id/icon_tienda"
+        app:layout_constraintEnd_toEndOf="@id/icon_tienda"/>
+
+    <!-- Icono 2: Fisio -->
+    <ImageView
+        android:id="@+id/icon_fisio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/icon_entrenos"
+        app:layout_constraintStart_toEndOf="@id/icon_tienda"
+        app:layout_constraintTop_toTopOf="@id/icon_tienda"
+        app:srcCompat="@drawable/_5363781" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fisio"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_fisio"
+        app:layout_constraintStart_toStartOf="@id/icon_fisio"
+        app:layout_constraintEnd_toEndOf="@id/icon_fisio"/>
+
+    <!-- Icono 3: Entrenos -->
+    <ImageView
+        android:id="@+id/icon_entrenos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_fisio"
+        app:layout_constraintTop_toTopOf="@id/icon_tienda"
+        app:srcCompat="@drawable/_1107082" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrenos"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_entrenos"
+        app:layout_constraintStart_toStartOf="@id/icon_entrenos"
+        app:layout_constraintEnd_toEndOf="@id/icon_entrenos"/>
+
+    <!-- Título Próximo Partido -->
+    <TextView
+        android:id="@+id/txt_proximo_partido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Próximo Partido"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@id/txt_categorias"
+        app:layout_constraintTop_toBottomOf="@id/icon_tienda" />
+
+    <!-- Texto "Ver Todo" a la derecha -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Todo"
+        android:textColor="#2196F3"
+        android:textStyle="bold"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/txt_proximo_partido"
+        app:layout_constraintTop_toTopOf="@id/txt_proximo_partido" />
+
+    <!-- Tarjeta del Partido (CardView) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_partido"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_proximo_partido">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Dom Oct 25 • 21:00 PM"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Escudo del rival -->
+            <ImageView
+                android:id="@+id/img_rival"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/txt_fecha"
+                app:layout_constraintTop_toBottomOf="@id/txt_fecha"
+                app:srcCompat="@drawable/real_madrid_logo_footylogos" />
+
+            <TextView
+                android:id="@+id/txt_nombre_rival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Real Madrid"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/img_rival"
+                app:layout_constraintTop_toTopOf="@id/img_rival" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LaLiga EA Sport"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/txt_nombre_rival"
+                app:layout_constraintTop_toBottomOf="@id/txt_nombre_rival" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Placeholder para el menú de navegación inferior -->
+
+    <View
+        android:layout_width="408dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="4dp"
+        android:background="#EEEEEE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="3dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="33dp"
+        android:layout_height="34dp"
+        app:srcCompat="@drawable/image_removebg_preview"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="665dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/_6522516"
+        tools:layout_editor_absoluteX="342dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/_82257"
+        tools:layout_editor_absoluteX="275dp"
+        tools:layout_editor_absoluteY="665dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="66dp"
+        android:layout_height="49dp"
+        app:srcCompat="@drawable/image_removebg_preview__1_"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        app:srcCompat="@drawable/_8065713"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
