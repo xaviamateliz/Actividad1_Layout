@@ -1,121 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> origin/main
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    android:background="@color/white"
+    android:background="@drawable/bg_gradient_barca"
     tools:context=".MainActivity">
 
-    <TextView
+    <!-- Panel blanco de la parte inferior (va detrás de todo) -->
+    <View
+        android:id="@+id/panel_blanco"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="320dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Línea vertical al 52%: los textos quedan a su izquierda -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_centro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.52" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="147dp"
-        android:layout_height="66dp"
-        android:backgroundTint="#FF9800"
-        android:text="🚨 Urgent Care"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="242dp" />
+    <!-- Jugador -->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="106dp"
-        android:layout_height="67dp"
-        android:text="📶  🛜 🔋"
-        tools:layout_editor_absoluteX="320dp"
-        tools:layout_editor_absoluteY="7dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="91dp"
-        android:layout_height="84dp"
-        android:backgroundTint="@color/design_default_color_error"
-        android:text="Button"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="342dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="91dp"
-        android:layout_height="84dp"
-        android:backgroundTint="@color/design_default_color_error"
-        android:text="Button"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="342dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="95dp"
-        android:layout_height="83dp"
-        android:backgroundTint="@color/design_default_color_error"
-        android:text="Button"
-        tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="342dp" />
+    <!-- Foto de perfil circular -->
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="203dp"
-        android:layout_height="257dp"
-        app:srcCompat="@drawable/descarga"
-        tools:layout_editor_absoluteX="203dp"
-        tools:layout_editor_absoluteY="66dp" />
+        android:id="@+id/img_destacada"
+        android:layout_width="151dp"
+        android:layout_height="275dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="376dp"
+        android:contentDescription="Jugador del Barça"
+        android:scaleType="fitEnd"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        android:src="@drawable/lamine"
+        android:transformPivotX="85dp"
+        android:transformPivotY="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_perfil"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fotoperfil" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Campana: círculo blanco con el icono dentro -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_campana"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="36dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/card_perfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_perfil">
+
+        <ImageView
+            android:id="@+id/img_campana"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="Notificaciones"
+            android:src="@android:drawable/ic_lock_idle_alarm" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Título en dos líneas, limitado a la mitad izquierda -->
+
+    <!-- Subtítulo -->
+    <TextView
+        android:id="@+id/txt_welcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="¡Hola\nCuler!"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/guideline_centro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_perfil" />
+
+    <!-- Botón redondeado con icono -->
+
+    <!-- Barra de estado (imágenes) -->
+
+    <TextView
+        android:id="@+id/txt_subtitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="¿Listo para el partido de hoy?"
+        android:textColor="#666666"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_centro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_welcome" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_accion_principal"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Ver tienda oficial"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:backgroundTint="#2231FF"
+        app:cornerRadius="28dp"
+        app:icon="@android:drawable/ic_menu_view"
+        app:iconGravity="textStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_subtitulo" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="47dp"
-        android:layout_height="107dp"
-        app:srcCompat="@drawable/fc_barcelona_logo_footylogos"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="7dp" />
-=======
-    android:background="#F5F5F5"
-    tools:context=".MainActivity">
+        android:layout_width="75dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/barra_de_estado_iphone__1_" />
 
-    <!-- Guía horizontal invisible que divide la pantalla al 45% -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_mitad"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="54dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hora" />
+
+    <!-- Título Categorías -->
+    <TextView
+        android:id="@+id/txt_categorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
-
-    <!-- Contenedor Mitad Superior (Espacio del Alumno 1) -->
-    <include
-        android:id="@+id/layout_arriba"
-        layout="@layout/layout_superior"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guideline_mitad"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="340dp"
+        android:text="Categorías"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Contenedor Mitad Inferior (Espacio del Alumno 2) -->
-    <include
-        android:id="@+id/layout_abajo"
-        layout="@layout/layout_inferior"
+    <!-- Icono 1: Tienda -->
+    <ImageView
+        android:id="@+id/icon_tienda"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/icon_fisio"
+        app:layout_constraintTop_toBottomOf="@id/txt_categorias"
+        app:srcCompat="@drawable/descarga__2_" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tienda"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_tienda"
+        app:layout_constraintStart_toStartOf="@id/icon_tienda"
+        app:layout_constraintEnd_toEndOf="@id/icon_tienda" />
+
+    <!-- Icono 2: Fisio -->
+    <ImageView
+        android:id="@+id/icon_fisio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/icon_entrenos"
+        app:layout_constraintStart_toEndOf="@id/icon_tienda"
+        app:layout_constraintTop_toTopOf="@id/icon_tienda"
+        app:srcCompat="@drawable/_5363781" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fisio"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_fisio"
+        app:layout_constraintStart_toStartOf="@id/icon_fisio"
+        app:layout_constraintEnd_toEndOf="@id/icon_fisio" />
+
+    <!-- Icono 3: Entrenos -->
+    <ImageView
+        android:id="@+id/icon_entrenos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_fisio"
+        app:layout_constraintTop_toTopOf="@id/icon_tienda"
+        app:srcCompat="@drawable/_1107082" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrenos"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_entrenos"
+        app:layout_constraintStart_toStartOf="@id/icon_entrenos"
+        app:layout_constraintEnd_toEndOf="@id/icon_entrenos" />
+
+    <!-- Título Próximo Partido -->
+    <TextView
+        android:id="@+id/txt_proximo_partido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Próximo Partido"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@id/txt_categorias"
+        app:layout_constraintTop_toBottomOf="@id/icon_tienda" />
+
+    <!-- Texto "Ver Todo" a la derecha -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Todo"
+        android:textColor="#2196F3"
+        android:textStyle="bold"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/txt_proximo_partido"
+        app:layout_constraintTop_toTopOf="@id/txt_proximo_partido" />
+
+    <!-- Tarjeta del Partido -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_partido"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/guideline_mitad"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_proximo_partido">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Dom Oct 25 • 21:00 PM"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_rival"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/txt_fecha"
+                app:layout_constraintTop_toBottomOf="@id/txt_fecha"
+                app:srcCompat="@drawable/real_madrid_logo_footylogos" />
+
+            <TextView
+                android:id="@+id/txt_nombre_rival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Real Madrid"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/img_rival"
+                app:layout_constraintTop_toTopOf="@id/img_rival" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LaLiga EA Sport"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/txt_nombre_rival"
+                app:layout_constraintTop_toBottomOf="@id/txt_nombre_rival" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Barra del menú de navegación inferior -->
+    <View
+        android:id="@+id/bottom_bar"
+        android:layout_width="0dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="4dp"
+        android:background="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
->>>>>>> origin/main
+
+    <!-- Iconos del menú inferior (cadena horizontal) -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="33dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintTop_toTopOf="@id/bottom_bar"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_bar"
+        app:srcCompat="@drawable/image_removebg_preview" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="45dp"
+        android:layout_height="32dp"
+        app:layout_constraintStart_toEndOf="@id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@id/bottom_bar"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_bar"
+        app:srcCompat="@drawable/_8065713" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="66dp"
+        android:layout_height="49dp"
+        app:layout_constraintStart_toEndOf="@id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@id/bottom_bar"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_bar"
+        app:srcCompat="@drawable/image_removebg_preview__1_" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@id/bottom_bar"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_bar"
+        app:srcCompat="@drawable/_82257" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintStart_toEndOf="@id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_bar"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_bar"
+        app:srcCompat="@drawable/_6522516" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
